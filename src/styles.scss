@@ -1,0 +1,42 @@
+/* You can add global styles to this file, and also import other style files */
+@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+
+$layout-min-width: 360px;
+$layout-max-width: 1400px;
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.layout {
+  height: 100%;
+  width: 50%;
+  min-width: $layout-min-width;
+  max-width: $layout-max-width;
+  display: flex;
+  flex-direction: column;
+  padding: 32px;
+  margin: 0 auto;
+  background-color: #ffffff;
+  text-align: center;
+}
+
+.button-classic {
+  display: block;
+  padding: 16px 32px;
+  border: 1px solid #d7dbe0;
+  border-radius: 4px;
+  margin: 16px auto;
+  background-color: #ffffff;
+  cursor: pointer;
+  font: inherit;
+
+  &:hover,
+  &:focus {
+    background-color: #ebecf0;
+  }
+
+}
+
+.button-content {
+  padding: 10px 0;
+}

@@ -1,0 +1,47 @@
+<div class="layout">
+  <div class="button-content">
+    <button class="button-classic" (click)="goToUploadedFiles()">See the uploaded files</button>
+  </div>
+
+  <div class="container">
+    <input
+      #fileInput
+      type="file"
+      [hidden]="true"
+      [accept]="acceptedFileExtensions"
+      (change)="onFileDialogChange($event)"
+      />
+    <div
+      class="upload-container"
+      (dragover)="onDrag($event)"
+      (dragenter)="onDrag($event)"
+      (dragleave)="onDrag($event)"
+      (drop)="onDrop($event)"
+    >
+      <div class="background"></div>
+      <ng-container *ngIf="!isUploading">
+        <div>
+          <div *ngIf="!isUploaded" class="upload">
+            Choose or drop a text file here
+          </div>
+          <div *ngIf="isUploaded" class="uploaded">
+            <div class="file-name">{{ fileName }}</div>
+            <div class="file-size">{{ fileSize }}</div>
+            <button type="button" (click)="clearFile()">
+              X
+            </button>
+          </div>
+          <button class="upload-button" type="button" (click)="onSelectFile()"></button>
+        </div>
+      </ng-container>
+      <ng-container *ngIf="isUploading">
+        <div class="progress-bar-container">
+          <mat-spinner color="black"></mat-spinner>
+        </div>
+      </ng-container>
+    </div>
+    <div *ngIf="isUploaded" class="uploaded">
+      <div class="file-content">{{ fileContent }}</div>
+    </div>
+  </div>
+</div>
