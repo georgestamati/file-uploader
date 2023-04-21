@@ -1,0 +1,27 @@
+<section class="layout">
+  <div class="button-content">
+    <button class="button-classic" (click)="backToUpload()">Back to Upload</button>
+  </div>
+
+  <table *ngIf="uploadedFiles$ | async as files; else noFiles">
+    <thead>
+      <th>Index</th>
+      <th>Name</th>
+      <th>Size</th>
+      <th>Date</th>
+    </thead>
+    <tbody>
+      <tr *ngFor="let file of files; let i = index">
+        <td>{{ i + 1 }}</td>
+        <td>{{ file.name }}</td>
+        <td>{{ file.size | clipSize }}</td>
+        <td>{{ file.date | date}}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <ng-template #noFiles>
+    There are no uploaded files.
+  </ng-template>
+</section>
+
